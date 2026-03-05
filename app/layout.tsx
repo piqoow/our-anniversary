@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Happy Valentine L",
-  description: "A special Valentine's gift for L ❤️",
+  title: "Happy Anniversary 3rd Anissakuu!!!",
+  description: "A special Anniversary 3rd's gift for Anissa ❤️",
 };
 
 export default function RootLayout({
