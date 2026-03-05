@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', // Wajib untuk GitHub Pages
-  basePath: '/our-anniversary', // Harus sama dengan nama repo Anda
+  // output: 'export', // Hapus/comment ini jika pakai Vercel (Vercel lebih suka mode default)
+  // basePath: '/our-anniversary', // HAPUS INI UNTUK VERCEL
   images: {
-    unoptimized: true, // Agar foto-foto muncul di server GitHub
+    unoptimized: true,
   },
   reactCompiler: true,
 };
