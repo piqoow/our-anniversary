@@ -1,13 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', 
-  basePath: '/our-anniversary', 
+  output: 'export', // Wajib untuk GitHub Pages
+  basePath: '/our-anniversary', // Harus sama dengan nama repo Anda
   images: {
-    unoptimized: true,
+    unoptimized: true, // Agar foto-foto muncul di server GitHub
   },
-  // Jangan masukkan reactCompiler di dalam 'experimental'
-  reactCompiler: true, 
+  reactCompiler: true,
 };
 
 export default nextConfig;
