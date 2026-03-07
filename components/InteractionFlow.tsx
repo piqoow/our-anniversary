@@ -349,7 +349,7 @@ const TypewriterStep = ({ onComplete }: { onComplete: () => void }) => {
         if (!isDeleting && displayedText !== text) {
             timer = setTimeout(() => {
                 setDisplayedText(text.slice(0, displayedText.length + 1));
-            }, 150);
+            }, 50);
         } else if (!isDeleting && displayedText === text) {
             timer = setTimeout(() => setIsDeleting(true), 2500);
         } else if (isDeleting && displayedText !== "") {
