@@ -6,11 +6,14 @@ import InteractionFlow from '@/components/InteractionFlow';
 
 // --- Love Timer Component ---
 const LoveTimer = () => {
-    const startDate = new Date('2023-03-14T00:00:00');
+    // Start date: March 14, 2023 at midnight GMT+7
+    const startDate = new Date('2023-03-14T00:00:00+07:00');
     
     const calculateTime = () => {
-        const now = new Date();
-        const diff = now.getTime() - startDate.getTime();
+        // Get current time in GMT+7
+        const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+        const start = new Date(startDate.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+        const diff = now.getTime() - start.getTime();
         
         const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
         const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
