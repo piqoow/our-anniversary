@@ -424,6 +424,76 @@ const TypewriterStep2 = ({ onComplete }: { onComplete: () => void }) => {
     );
 };
 
+// --- Step 6: Special Image Display ---
+const SpecialImageStep = ({ onComplete }: { onComplete: () => void }) => {
+    const [showImage, setShowImage] = useState(false);
+
+    useEffect(() => {
+        // Show image after a brief delay
+        const timer = setTimeout(() => setShowImage(true), 500);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (showImage) {
+            // Auto advance after showing image for 4 seconds
+            const timer = setTimeout(() => onComplete(), 4000);
+            return () => clearTimeout(timer);
+        }
+    }, [showImage, onComplete]);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            className="flex flex-col items-center justify-center relative z-10"
+        >
+            <motion.div
+                initial={{ scale: 0, rotate: -10 }}
+                animate={{ 
+                    scale: showImage ? 1 : 0,
+                    rotate: showImage ? 0 : -10
+                }}
+                transition={{ 
+                    scale: { type: "spring", stiffness: 200, damping: 15 },
+                    rotate: { duration: 0.5 }
+                }}
+                className="relative"
+            >
+                <div className="relative rounded-3xl overflow-hidden shadow-[0_0_60px_rgba(239,68,68,0.4)] border-4 border-white/20">
+                    <img
+                        src="/0.jpg"
+                        alt="Special Moment"
+                        className="w-80 h-80 sm:w-96 sm:h-96 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-500/30 to-transparent" />
+                </div>
+                <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: showImage ? 1 : 0 }}
+                    transition={{ delay: 0.3, type: "spring" }}
+                    className="absolute -top-4 -right-4"
+                >
+                    <Heart className="w-12 h-12 text-red-500 fill-red-500 drop-shadow-lg" />
+                </motion.div>
+            </motion.div>
+
+            <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                    opacity: showImage ? 1 : 0,
+                    y: showImage ? 0 : 20
+                }}
+                transition={{ delay: 0.5 }}
+                className="mt-8 text-2xl font-playfair text-white/80"
+            >
+                LOOOOBBBBBBBBBB ❤️
+            </motion.p>
+        </motion.div>
+    );
+};
+
 export default function InteractionFlow({ onFlowComplete }: { onFlowComplete: () => void }) {
     const [step, setStep] = useState(1);
 
@@ -449,7 +519,10 @@ export default function InteractionFlow({ onFlowComplete }: { onFlowComplete: ()
                     <TypewriterStep key="step4" onComplete={() => setStep(5)} />
                 )}
                 {step === 5 && (
-                    <TypewriterStep2 key="step5" onComplete={() => onFlowComplete()} />
+                    <TypewriterStep2 key="step5" onComplete={() => setStep(6)} />
+                )}
+                {step === 6 && (
+                    <SpecialImageStep key="step6" onComplete={() => onFlowComplete()} />
                 )}
             </AnimatePresence>
 

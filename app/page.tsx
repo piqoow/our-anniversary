@@ -50,6 +50,8 @@ export default function Home() {
     '/40.jpg',
     '/41.jpg',
     '/42.jpg',
+    '/43.jpg',
+    '/44.jpg',
     '/VID1.gif',
     '/VID2.gif',
     '/VID3.gif',
@@ -59,6 +61,7 @@ export default function Home() {
     '/VID7.gif',
     '/VID8.gif',
     '/VID9.gif',
+    '/VID10.gif',
   ];
 
   return (
