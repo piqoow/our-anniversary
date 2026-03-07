@@ -76,7 +76,7 @@ const LoveModeStep = ({ onComplete }: { onComplete: () => void }) => {
 
                 <div className="flex flex-col items-center space-y-6">
                     <span className={`text-5xl font-playfair transition-colors duration-1000 ${isOn ? 'text-white' : 'text-white/40'}`}>
-                        Dah siap bubb?
+                        Love mode
                     </span>
 
                     <button
@@ -103,7 +103,7 @@ const LoveModeStep = ({ onComplete }: { onComplete: () => void }) => {
                                     exit={{ opacity: 0 }}
                                     className="absolute right-6 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30"
                                 >
-                                    udah?
+                                    yes?
                                 </motion.span>
                             )}
                             {isOn && (
@@ -113,7 +113,7 @@ const LoveModeStep = ({ onComplete }: { onComplete: () => void }) => {
                                     exit={{ opacity: 0 }}
                                     className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/80"
                                 >
-                                    yesss
+                                    on
                                 </motion.span>
                             )}
                         </AnimatePresence>
