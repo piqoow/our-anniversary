@@ -69,9 +69,7 @@ export default function Home() {
       {!showGallery ? (
         <InteractionFlow onFlowComplete={() => setShowGallery(true)} />
       ) : (
-        <>
-          <audio src="/lovely.mp3" autoPlay loop className="hidden" />
-          <DomeGallery
+        <DomeGallery
             images={userImages}
             fit={0.8}
             minRadius={600}
@@ -81,7 +79,6 @@ export default function Home() {
             grayscale={false}
             autoRotationSpeed={0.1}
           />
-        </>
       )}
     </main>
   );
