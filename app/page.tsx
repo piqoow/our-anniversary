@@ -27,6 +27,9 @@ export default function Home() {
     '/5A.jpg',
     '/6A.jpg',
     '/7A.jpg',
+    '/VID1.mp4',
+    '/VID2.mp4',
+    '/VID3.mp4',
   ];
 
   return (
