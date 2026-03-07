@@ -706,15 +706,11 @@ export default function DomeGallery({
     // Add romantic labels
     const labelLeft = document.createElement('div');
     labelLeft.className = 'romantic-label label-left font-playfair';
-    labelLeft.innerText = 'My';
-    labelLeft.innerText = 'My';
-    labelLeft.innerText = 'My';
+    labelLeft.innerText = '❤️❤️❤️My';
 
     const labelRight = document.createElement('div');
     labelRight.className = 'romantic-label label-right font-playfair';
-    labelRight.innerText = 'Everything❤️';
-    labelRight.innerText = 'Everything❤️';
-    labelRight.innerText = 'Everything❤️';
+    labelRight.innerText = 'Everything❤️❤️❤️';
 
     viewerRef.current?.appendChild(labelLeft);
     viewerRef.current?.appendChild(labelRight);
