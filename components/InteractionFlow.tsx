@@ -257,36 +257,6 @@ const LoveMeterStep = ({ onComplete }: { onComplete: () => void }) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        // Play music when LoveMeterStep starts
-        const audio = new Audio('/lovely.mp3');
-        audio.loop = true;
-        audio.volume = 0.5;
-        
-        const playAudio = () => {
-            audio.play().catch(e => console.log('Audio play failed:', e));
-        };
-        
-        // Try to play immediately, or on user interaction
-        playAudio();
-        
-        // Also try on first click anywhere
-        const handleInteraction = () => {
-            playAudio();
-            document.removeEventListener('click', handleInteraction);
-            document.removeEventListener('touchstart', handleInteraction);
-        };
-        document.addEventListener('click', handleInteraction);
-        document.addEventListener('touchstart', handleInteraction);
-
-        return () => {
-            audio.pause();
-            audio.currentTime = 0;
-            document.removeEventListener('click', handleInteraction);
-            document.removeEventListener('touchstart', handleInteraction);
-        };
-    }, []);
-
-    useEffect(() => {
         const interval = setInterval(() => {
             setProgress(prev => {
                 if (prev >= 100) {
@@ -526,6 +496,34 @@ const SpecialImageStep = ({ onComplete }: { onComplete: () => void }) => {
 
 export default function InteractionFlow({ onFlowComplete }: { onFlowComplete: () => void }) {
     const [step, setStep] = useState(1);
+
+    // Music player - plays throughout all steps
+    useEffect(() => {
+        const audio = new Audio('/lovely.mp3');
+        audio.loop = true;
+        audio.volume = 0.5;
+        
+        const playAudio = () => {
+            audio.play().catch(e => console.log('Audio play failed:', e));
+        };
+        
+        playAudio();
+        
+        const handleInteraction = () => {
+            playAudio();
+            document.removeEventListener('click', handleInteraction);
+            document.removeEventListener('touchstart', handleInteraction);
+        };
+        document.addEventListener('click', handleInteraction);
+        document.addEventListener('touchstart', handleInteraction);
+
+        return () => {
+            audio.pause();
+            audio.currentTime = 0;
+            document.removeEventListener('click', handleInteraction);
+            document.removeEventListener('touchstart', handleInteraction);
+        };
+    }, []);
 
     return (
         <div className="fixed inset-0 z-50 bg-[#060010] flex items-center justify-center overflow-hidden">
