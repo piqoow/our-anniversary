@@ -381,6 +381,49 @@ const TypewriterStep = ({ onComplete }: { onComplete: () => void }) => {
     );
 };
 
+// --- Step 5: Second Typewriter - 3 Years Love Message ---
+const TypewriterStep2 = ({ onComplete }: { onComplete: () => void }) => {
+    const text = "3 Tahun kita bersama, selalu ada cinta dan kenangan indah. Terima kasih sudah menjadi bagian hidupku! ❤️";
+    const [displayedText, setDisplayedText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (!isDeleting && displayedText !== text) {
+            timer = setTimeout(() => {
+                setDisplayedText(text.slice(0, displayedText.length + 1));
+            }, 80);
+        } else if (!isDeleting && displayedText === text) {
+            timer = setTimeout(() => setIsDeleting(true), 4000);
+        } else if (isDeleting && displayedText !== "") {
+            timer = setTimeout(() => {
+                setDisplayedText(text.slice(0, displayedText.length - 1));
+            }, 50);
+        } else if (isDeleting && displayedText === "") {
+            onComplete();
+        }
+        return () => clearTimeout(timer);
+    }, [displayedText, isDeleting, onComplete, text]);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, filter: 'blur(20px)' }}
+            className="flex items-center justify-center p-8 relative z-10 max-w-4xl"
+        >
+            <h1 className="text-3xl sm:text-5xl font-playfair text-white text-center leading-relaxed">
+                {displayedText}
+                <motion.span
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ repeat: Infinity, duration: 0.8 }}
+                    className="inline-block w-2 sm:w-3 h-8 sm:h-12 bg-red-500 ml-1 align-middle"
+                />
+            </h1>
+        </motion.div>
+    );
+};
+
 export default function InteractionFlow({ onFlowComplete }: { onFlowComplete: () => void }) {
     const [step, setStep] = useState(1);
 
@@ -403,7 +446,10 @@ export default function InteractionFlow({ onFlowComplete }: { onFlowComplete: ()
                     <LoveMeterStep key="step3" onComplete={() => setStep(4)} />
                 )}
                 {step === 4 && (
-                    <TypewriterStep key="step4" onComplete={() => onFlowComplete()} />
+                    <TypewriterStep key="step4" onComplete={() => setStep(5)} />
+                )}
+                {step === 5 && (
+                    <TypewriterStep2 key="step5" onComplete={() => onFlowComplete()} />
                 )}
             </AnimatePresence>
 
