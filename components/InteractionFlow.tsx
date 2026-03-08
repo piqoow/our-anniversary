@@ -391,13 +391,13 @@ const TypewriterStep2 = ({ onComplete }: { onComplete: () => void }) => {
         let timer: NodeJS.Timeout;
         if (!isDeleting && displayedText !== text) {
             timer = setTimeout(() => {
-                setDisplayedText(text.slice(0, displayedText.length + 1));
+                setDisplayedText(text.slice(0, displayedText.length + 2));
             }, 30);
         } else if (!isDeleting && displayedText === text) {
             timer = setTimeout(() => setIsDeleting(true), 4000);
         } else if (isDeleting && displayedText !== "") {
             timer = setTimeout(() => {
-                setDisplayedText(text.slice(0, displayedText.length - 1));
+                setDisplayedText(text.slice(0, displayedText.length - 5));
             }, 30);
         } else if (isDeleting && displayedText === "") {
             onComplete();
