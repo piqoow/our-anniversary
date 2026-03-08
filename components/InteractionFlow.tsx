@@ -410,16 +410,18 @@ const TypewriterStep2 = ({ onComplete }: { onComplete: () => void }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, filter: 'blur(20px)' }}
-            className="flex items-center justify-center p-8 relative z-10 max-w-4xl"
+            className="flex items-center justify-center p-8 relative z-10 max-w-4xl w-full h-[80vh]"
         >
-            <h1 className="text-3xl sm:text-5xl font-playfair text-white text-center leading-relaxed">
-                {displayedText}
-                <motion.span
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{ repeat: Infinity, duration: 0.8 }}
-                    className="inline-block w-2 sm:w-3 h-8 sm:h-12 bg-red-500 ml-1 align-middle"
-                />
-            </h1>
+            <div className="w-full h-full overflow-y-auto scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-transparent pr-4">
+                <h1 className="text-2xl sm:text-4xl font-playfair text-white text-center leading-relaxed whitespace-pre-wrap pb-20">
+                    {displayedText}
+                    <motion.span
+                        animate={{ opacity: [0, 1, 0] }}
+                        transition={{ repeat: Infinity, duration: 0.8 }}
+                        className="inline-block w-2 sm:w-3 h-8 sm:h-10 bg-red-500 ml-1 align-middle"
+                    />
+                </h1>
+            </div>
         </motion.div>
     );
 };
