@@ -355,7 +355,7 @@ const TypewriterStep = ({ onComplete }: { onComplete: () => void }) => {
         } else if (isDeleting && displayedText !== "") {
             timer = setTimeout(() => {
                 setDisplayedText(text.slice(0, displayedText.length - 1));
-            }, 80);
+            }, 50);
         } else if (isDeleting && displayedText === "") {
             onComplete();
         }
@@ -383,7 +383,7 @@ const TypewriterStep = ({ onComplete }: { onComplete: () => void }) => {
 
 // --- Step 5: Second Typewriter - 3 Years Love Message ---
 const TypewriterStep2 = ({ onComplete }: { onComplete: () => void }) => {
-    const text = "3 Tahun kita bersama, selalu ada cinta dan kenangan indah. Terima kasih sudah menjadi bagian hidupku! ❤️";
+    const text = "Happpyyy 3 tahun syaaangg💖💖💖.. ngga nyangka kita udah selama ini, banyak hal-hal yg udah banyak kita lewatinn, kadang ada berantemnya karna salah paham beda pendapat sama hal yg sepele tapi kita saling maafin, seterusnya bakal jadi pelajaran buat kita saling mengenal kamu sama aku yaa, ini harinya kitaa, kita harus happyy happyyy semangat teruuss apalagi kamu udah ada kegiatan hal yg baru yaitu kuliaahh yeeaayyy seruu sekali pasti kamu temuin hal yg baru, kamu belajar lagi tambah ilmu, kamu happyy aku juga happyyy, yg penting jangan nakal yaaa bubb😤😡 nakalnya sama aku ajaaaa😋🥵💦pokoknyaa sama aku terus yaa buubbb, akuu happpyyy pacaran sama kamuu, aku cintaa dan sayaanggg sekalii sama kamuu💖looovbbvb sekaliiii, kita sama sama terus yaaaaa 💕💞❤️‍🔥  i loovvvee you so muuucchhh😘😘💦 happpyyy annivvv 3 tahuun buuubbb💖💖💖";
     const [displayedText, setDisplayedText] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
 
